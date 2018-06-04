@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!-- 定义  dataSource -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	    <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+	    <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+	    <property name="username" value="hr" />
+	    <property name="password" value="123456" />
+	</bean>
+	
+	<!-- 定义 jdbc 事务管理器 -->
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	    <property name="dataSource" ref="dataSource"/>
+	</bean>
+
+	<!-- 开启事务管理 -->
+	<tx:annotation-driven transaction-manager="txManager"/>
+	
+	<!-- 定义 businessService -->
+	<bean id="businessService" class="shangbo.spring.transaction.jdbc.annotation.DefaultBusinessService">
+	    <property name="dataSource" ref="dataSource"/>
+	</bean>
+
+</beans>

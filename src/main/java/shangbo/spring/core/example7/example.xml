@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+		scope 指定对象对象作用域，支持如下值
+		singleton     默认值
+		prototype     每次返回新对象
+		request       Web下可用
+		session       Web下可用
+		globalSession Web下可用
+		application   Web下可用
+		websocket     Web下可用
+	-->
+	<bean class="shangbo.spring.core.example7.OutPutService" scope = "prototype"/>
+
+</beans>

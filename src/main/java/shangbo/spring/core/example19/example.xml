@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+		构造器方式依赖注入
+		index 指定参数序号
+		value 用来注入基本类型，如：String, Integer, Double 等
+	 -->
+	<bean class="shangbo.spring.core.example19.Person">
+		<constructor-arg index="0" value="shangbo"/>
+		<constructor-arg index="1" value="30"/>
+	</bean>
+
+</beans>

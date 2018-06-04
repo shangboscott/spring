@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="shangbo.spring.core.example31.MessageServiceImpl"/>
+
+	<!-- 
+		autowire="no" 表示手动注入
+		autowire="byType" 表示根据类型，通过 setter 方法自动注入
+		autowire="constructor" 表示根据类型，通过构造器方法自动注入
+		autowire="byName" 表示根据名字自动注入
+	-->
+	<bean class="shangbo.spring.core.example31.MessagePrinter" autowire="byType"/>
+	
+</beans>

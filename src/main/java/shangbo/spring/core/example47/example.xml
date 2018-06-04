@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- 
+		注册 properties 文件，需要引入 context 命名空间
+	-->
+	<context:property-placeholder location="classpath:shangbo/spring/core/example47/system.${env}.properties"/>
+	
+	<!-- 
+		password 属性通过调用其他对象方法注入
+		由于 dataSource 隐式依赖 passwordProvider 对象，我们需要使用 depends-on 标识依赖关系
+	 -->
+	<bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource" depends-on="passwordProvider">
+	    <property name="driverClassName" value="${jdbc.driverClassName}"/>
+	    <property name="url" value="${jdbc.url}"/>
+	    <property name="username" value="${jdbc.username}"/>
+	    <property name="password" value="#{passwordProvider.getPassword()}"/>
+	</bean>
+
+	<bean id="passwordProvider" class="shangbo.spring.core.example47.PasswordProvider"/>
+
+</beans>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+		基于 Setter 方法的依赖注入
+		name 指定对象属性名字
+		value 用来注入基本类型，如：String, Integer, Double 等
+	 -->
+	<bean class="shangbo.spring.core.example20.Person">
+		<property name="name" value = "shangbo"/>
+		<property name="age" value = "30"/>
+	</bean>
+
+</beans>

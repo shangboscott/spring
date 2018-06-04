@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd"
+        default-autowire="byType">
+
+	<!-- 
+		全局设定自动注入方式
+	-->
+	
+	<!-- 
+		两个对象继承自同一接口
+		autowire-candidate="false" 表示该对象不参与自动注入
+	 -->
+	<bean class="shangbo.spring.core.example38.MessageServiceDBImpl" autowire-candidate="false" />
+	<bean class="shangbo.spring.core.example38.MessageServiceFileImpl"/>
+	<bean class="shangbo.spring.core.example38.MessagePrinter"/>
+	
+</beans>

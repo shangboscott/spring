@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+		abstract="true" 时 Spring 不会生成一个对象
+	-->
+	<bean id="parentBean" abstract="true" class="shangbo.spring.core.example42.Person">
+		<property name="name" value="shangbo"/>
+		<property name="age" value="30"/>
+	</bean>
+	
+	<!-- 
+		parent="parentBean" 可以继承父类的声明中注入的值
+	-->
+	<bean id="student" parent="parentBean" class="shangbo.spring.core.example42.Student">
+		<property name="name" value="zhangsan"/>
+		<property name="school" value="QingHua"/>
+	</bean>
+
+</beans>

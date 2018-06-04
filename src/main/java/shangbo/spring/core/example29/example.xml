@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- 
+		注意messageService对象是 prototype
+		<aop:scoped-proxy/> 指示容器生成代理对象
+	-->
+    <bean id="messageService" class="shangbo.spring.core.example29.MessageServiceImpl" scope="prototype">
+    	<aop:scoped-proxy/>
+    </bean>
+
+	<!-- 
+		MessagePrinter 是 singleton 对象
+	-->
+	<bean class="shangbo.spring.core.example29.MessagePrinter">
+		<constructor-arg ref="messageService"/>
+	</bean>
+	
+</beans>

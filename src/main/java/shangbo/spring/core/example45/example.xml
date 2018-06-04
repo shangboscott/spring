@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 
+		使用 profile
+	 -->
+	<beans profile="dev">
+		<bean id="specialBean" class="shangbo.spring.core.example45.SpecialClass">
+			<property name="env" value = "dev"/>
+		</bean>
+	</beans>
+
+	<beans profile="uat">
+		<bean id="specialBean" class="shangbo.spring.core.example45.SpecialClass">
+			<property name="env" value = "uat"/>
+		</bean>
+	</beans>
+	
+	<beans profile="prod">
+		<bean id="specialBean" class="shangbo.spring.core.example45.SpecialClass">
+			<property name="env" value = "prod"/>
+		</bean>
+	</beans>
+
+</beans>

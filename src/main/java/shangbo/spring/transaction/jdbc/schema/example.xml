@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- 定义 businessService -->
+	<bean id="businessService" class="shangbo.spring.transaction.jdbc.schema.DefaultBusinessService">
+	    <property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<!-- 事务 Advice -->
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <!-- 设置以get开头的方法为只读事务 -->
+            <tx:method name="get*" read-only="true"/>
+            <!-- 设置其他方法为默认事务 -->
+            <tx:method name="*" rollback-for="Exception" />
+        </tx:attributes>
+    </tx:advice>
+	
+	<!-- aop 设置 -->
+    <aop:config>
+        <aop:pointcut id="businessServiceOperation" expression="execution(* shangbo.spring.transaction.jdbc.schema.DefaultBusinessService.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="businessServiceOperation"/>
+    </aop:config>
+	
+	<!-- 定义  dataSource -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	    <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+	    <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+	    <property name="username" value="hr" />
+	    <property name="password" value="123456" />
+	</bean>
+	
+	<!-- 定义 jdbc 事务管理器 -->
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	    <property name="dataSource" ref="dataSource"/>
+	</bean>
+
+</beans>

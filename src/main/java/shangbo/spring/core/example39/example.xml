@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd"
+        default-autowire="byType"
+        default-autowire-candidates="messageServiceDBImpl">
+
+	<!-- 
+		全局设定名为 messageServiceDBImpl 不参与自动注入
+		可以指定多个值，逗号分隔
+	-->
+	
+	<!-- 
+		两个对象继承自同一接口
+	 -->
+	<bean id = "messageServiceDBImpl" class="shangbo.spring.core.example39.MessageServiceDBImpl"/>
+	<bean class="shangbo.spring.core.example39.MessageServiceFileImpl"/>
+	<bean class="shangbo.spring.core.example39.MessagePrinter"/>
+	
+</beans>

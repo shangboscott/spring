@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+		注入 java.util.Map
+	 -->
+	<bean class="shangbo.spring.core.example23.DataService">
+		<property name="dbconfig">
+			<map>
+				<entry key="jdbc.driver.className" value="com.mysql.jdbc.Driver"/>
+				<entry key="jdbc.url" value="jdbc:mysql://localhost:3306/mydb"/>
+			</map>
+		</property>
+	</bean>
+
+</beans>

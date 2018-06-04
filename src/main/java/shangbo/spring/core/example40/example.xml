@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+		构造器方式依赖注入
+		使用 c 命名空间
+		注意需要引入 c 命名空间
+	 -->
+	<bean id="shangbo" class="shangbo.spring.core.example40.Person"
+		c:name="shangbo"
+		c:age="30"/>
+
+</beans>

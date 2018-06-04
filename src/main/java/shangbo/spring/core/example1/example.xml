@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+		id 指定 bean 的标识符，必须唯一，如果没有设置，spring 帮我们生成一个
+		name 也用来标识 bean，但可以起多个名字，不是必须要设置的
+		class 指定类的全名
+	-->
+	<bean id="outPutService"
+		name="outPutService1,outPutService2"
+		class="shangbo.spring.core.example1.OutPutService"/>
+
+</beans>
